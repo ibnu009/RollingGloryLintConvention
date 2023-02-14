@@ -132,6 +132,11 @@ extension LintStringExt on String {
     return rawClassName;
   }
 
+  bool isCamelCase() {
+    final _camelCaseTester = RegExp(r'^[A-Z]?[a-z]+(?:[A-Z][a-z]+)*$');
+    return _camelCaseTester.hasMatch(this);
+  }
+
   String getWrongModelClassNameMessage() {
     String message = '';
 
