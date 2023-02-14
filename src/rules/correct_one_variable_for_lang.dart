@@ -10,7 +10,6 @@ import 'package:analyzer/src/dart/error/lint_codes.dart';
 
 import '../../helper/string_extention.dart';
 
-
 const _desc = r' ';
 
 const _details = r'''
