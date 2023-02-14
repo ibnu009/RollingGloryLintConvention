@@ -3,9 +3,12 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/dart/ast/token.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/src/lint/linter.dart';
 import 'package:analyzer/src/dart/error/lint_codes.dart';
+
+import '../../helper/string_extention.dart';
 
 const _desc = r'Name source files using `lowercase_with_underscores`.';
 
@@ -42,15 +45,15 @@ library.
 
 ''';
 
-class FileNames extends LintRule {
+class PreferCamelCase extends LintRule {
   static const LintCode code = LintCode(
-      'file_names', "The file name '{0}' isn't a snake_case identifier.",
+      'prefer_camel_case', "The type name '{0}' isn't an CamelCase identifier.",
       correctionMessage:
-          'Try changing the name to follow the snake_case style.');
+          'Try changing the name to follow the CamelCase style. example: camelCase for variable/function and CamelCase for class');
 
-  FileNames()
+  PreferCamelCase()
       : super(
-            name: 'file_names',
+            name: 'prefer_camel_case',
             description: _desc,
             details: _details,
             group: Group.style);
@@ -62,7 +65,13 @@ class FileNames extends LintRule {
   void registerNodeProcessors(
       NodeLintRegistry registry, LinterContext context) {
     var visitor = _Visitor(this);
-    registry.addCompilationUnit(this, visitor);
+    registry.addGenericTypeAlias(this, visitor);
+    registry.addClassDeclaration(this, visitor);
+    registry.addClassTypeAlias(this, visitor);
+    registry.addFunctionTypeAlias(this, visitor);
+    registry.addEnumDeclaration(this, visitor);
+    registry.addDeclaredVariablePattern(this, visitor);
+    registry.addVariableDeclarationList(this, visitor);
   }
 }
 
@@ -71,13 +80,49 @@ class _Visitor extends SimpleAstVisitor<void> {
 
   _Visitor(this.rule);
 
+  void check(Token name) {
+    var lexeme = name.lexeme;
+    if (!lexeme.isCamelCase()) {
+      rule.reportLintForToken(name, arguments: [lexeme]);
+    }
+  }
+
   @override
-  void visitCompilationUnit(CompilationUnit node) {
-    var declaredElement = node.declaredElement;
-    if (declaredElement != null) {
-      var fileName = declaredElement.source.shortName;
-      if (true) {
-        rule.reportLintForOffset(0, 0, arguments: [fileName]);
+  void visitClassDeclaration(ClassDeclaration node) {
+    check(node.name);
+  }
+
+  @override
+  void visitClassTypeAlias(ClassTypeAlias node) {
+    check(node.name);
+  }
+
+  @override
+  void visitEnumDeclaration(EnumDeclaration node) {
+    check(node.name);
+  }
+
+  @override
+  void visitFunctionTypeAlias(FunctionTypeAlias node) {
+    check(node.name);
+  }
+
+  @override
+  void visitGenericTypeAlias(GenericTypeAlias node) {
+    check(node.name);
+  }
+
+  @override
+  void visitDeclaredVariablePattern(DeclaredVariablePattern node) {
+    check(node.name);
+  }
+
+  @override
+  void visitVariableDeclarationList(VariableDeclarationList node) {
+    var variables = node.variables;
+    for (var variable in variables) {
+      if (!variable.isConst) {
+        check(variable.name);
       }
     }
   }
