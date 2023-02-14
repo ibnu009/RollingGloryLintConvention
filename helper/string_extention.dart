@@ -43,6 +43,17 @@ extension LintStringExt on String {
     return regExp.hasMatch(this);
   }
 
+  bool isPathLang() {
+    RegExp regExp = RegExp(r'.*(languages/en/|languages/id/).*');
+    return regExp.hasMatch(this);
+  }
+
+  bool isPathRGBCodeBase() {
+    RegExp regExp = RegExp(
+        r'.*gloryconventionlintplayground/json_api/*');
+    return regExp.hasMatch(this);
+  }
+
   bool isCorrectModelClassName() {
     RegExp regExp = RegExp(r".*(Services|Response|Request|Constant|Enum)$");
     return !regExp.hasMatch(this);
@@ -100,6 +111,21 @@ extension LintStringExt on String {
 
   bool isCorrectFileConstantName() {
     RegExp regExp = RegExp(r"_constant.dart$");
+    return regExp.hasMatch(this);
+  }
+
+  bool isCorrectFileLang() {
+    RegExp regExp = RegExp(r"_lang.dart$");
+    return regExp.hasMatch(this);
+  }
+
+  bool isCorrectVariableNullable() {
+    RegExp regExp = RegExp(r'.*\?.*');
+    return regExp.hasMatch(this);
+  }
+
+  bool isCorrectFileBaseResponse() {
+    RegExp regExp = RegExp(r".*base_response.dart.*");
     return regExp.hasMatch(this);
   }
 
