@@ -128,6 +128,11 @@ extension LintStringExt on String {
     return regExp.hasMatch(this);
   }
 
+  bool isCorrectUsingBaseResponse() {
+    RegExp regExp = RegExp(r".*BaseResponse|BaseListResponse.*");
+    return regExp.hasMatch(this);
+  }
+
   String renameClass({required String type}) {
     List<String> words = split(RegExp(r'(?=[A-Z])'));
     words.removeWhere((w) {

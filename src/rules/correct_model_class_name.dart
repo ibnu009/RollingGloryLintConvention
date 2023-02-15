@@ -9,9 +9,22 @@ import 'package:analyzer/src/dart/error/lint_codes.dart';
 
 import '../../helper/string_extention.dart';
 
-const _desc = r'Name source files using `lowercase_with_underscores`.';
+const _desc = r'The class name for models must have Model word';
 
 const _details = r'''
+**CAUTION** ...
+Ensure to add Model word at the end of class name in models file
+
+**DO:**
+```dart
+class ProductModel {}
+```
+
+**DON'T:**
+```dart
+class ProductModel {}
+```
+
 ''';
 
 class CorrectModelClassName extends LintRule {
