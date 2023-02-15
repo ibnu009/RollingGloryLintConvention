@@ -9,9 +9,24 @@ import 'package:analyzer/src/dart/error/lint_codes.dart';
 
 import '../../helper/string_extention.dart';
 
-const _desc = r'Name source files using `lowercase_with_underscores`.';
+const _desc = r'Response file must always end with "_response". ';
 
-const _details = r'''
+const _details =
+    '''
+Response file must always end with "_response" and should always use snake case for file naming.
+
+**DO:**
+```dart
+  gift_response.dart
+  product_response.dart
+```
+
+**DON'T:**
+```dart
+  product_service.dart
+  ProductRequest.dart
+```
+
 ''';
 
 class CorrectResponseFileName extends LintRule {

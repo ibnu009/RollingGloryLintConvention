@@ -7,6 +7,8 @@ import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/src/lint/linter.dart';
 import 'package:analyzer/src/dart/error/lint_codes.dart';
 
+import '../../helper/string_extention.dart';
+
 const _desc = r"Please declare variable as static const.";
 
 const _details = r'''
@@ -43,9 +45,12 @@ class _Visitor extends RecursiveAstVisitor<void> {
   @override
   void visitVariableDeclarationList(VariableDeclarationList node) {
     var variables = node.variables;
-    for (var variable in variables) {
-      if (!variable.isConst) {
-        rule.reportLintForToken(variable.name);
+    String sourceCode = node.toSource();
+    if (sourceCode.isPathLang()) {
+      for (var variable in variables) {
+        if (!variable.isConst) {
+          rule.reportLintForToken(variable.name);
+        }
       }
     }
   }

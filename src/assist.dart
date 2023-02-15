@@ -29,10 +29,11 @@ import 'rules/correct_response_file_name.dart';
 import 'rules/correct_service_annotation.dart';
 import 'rules/correct_service_class_name.dart';
 import 'rules/correct_service_file_name.dart';
-import 'rules/prefer_camel_case.dart';
+import 'rules/prefer_lower_camel_case.dart';
 import 'rules/prefer_single_class_in_one_file.dart';
 import 'rules/prefer_single_quotes.dart';
 import 'rules/prefer_static_const_lang_variable.dart';
+import 'rules/prefer_upper_camel_case.dart';
 
 Future<List<protocolCommon.AnalysisError>> scanning(List<File> files) async {
   List<protocolCommon.AnalysisError> result = [];
@@ -62,7 +63,9 @@ Future<List<protocolCommon.AnalysisError>> scanning(List<File> files) async {
   Registry.ruleRegistry.register(CorrectResponseFileName());
   Registry.ruleRegistry.register(CorrectResponseClassName());
 
-  Registry.ruleRegistry.register(PreferCamelCase());
+  Registry.ruleRegistry.register(PreferUpperCamelCase());
+  Registry.ruleRegistry.register(PreferLowerCamelCase());
+
   Registry.ruleRegistry.register(PreferStaticConstLangVariable());
 
   lint_service.linterVersion = "0.0.0-alpha.0";
@@ -85,7 +88,8 @@ Future<List<protocolCommon.AnalysisError>> scanning(List<File> files) async {
     "correct_response_file_name",
     "correct_request_class_name",
     "correct_request_file_name",
-    "prefer_camel_case",
+    "prefer_upper_camel_case",
+    "prefer_lower_camel_case",
     "prefer_static_const_lang_variable"
   ];
   var rules = <LintRule>[];

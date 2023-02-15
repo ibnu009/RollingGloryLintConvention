@@ -9,9 +9,24 @@ import 'package:analyzer/src/dart/error/lint_codes.dart';
 
 import '../../helper/string_extention.dart';
 
-const _desc = r'Name source files using `lowercase_with_underscores`.';
+const _desc = r'Response class must always end with "Response". ';
 
-const _details = r'''
+const _details =
+    '''
+Response class must always end with "Response". 
+
+**DO:**
+```dart
+  class GiftResponse{}
+  class ProductResponse{}
+```
+
+**DON'T:**
+```dart
+  class Gift{}
+  class ProductService{}
+```
+
 ''';
 
 class CorrectResponseClassName extends LintRule {

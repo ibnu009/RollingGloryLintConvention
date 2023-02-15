@@ -10,50 +10,40 @@ import 'package:analyzer/src/dart/error/lint_codes.dart';
 
 import '../../helper/string_extention.dart';
 
-const _desc = r'Name source files using `lowercase_with_underscores`.';
+const _desc = r'Use UpperCamelCase for naming';
 
-const _details =
-    r'''
-**DO** name source files using `lowercase_with_underscores`.
+const _details = '''
+Class, Enum, Widget, typedefs and Extension must always use UpperCamelCase. 
+Class, Enum, Widget, typedefs and Extension should capitalize the first letter of each word (including
+the first word), and use no separators.
 
-Some file systems are not case-sensitive, so many projects require filenames to
-be all lowercase. Using a separating character allows names to still be readable
-in that form. Using underscores as the separator ensures that the name is still
-a valid Dart identifier, which may be helpful if the language later supports
-symbolic imports.
+**DO:**
+```dart
+  class GiftService{}
+  enum CategoryType{}
+  class IconCalculatorButton extends StatelessWidget{}
+  extension StringExtension on String {}
+```
 
-**BAD:**
-
-* `SliderMenu.dart`
-* `filesystem.dart`
-* `file-system.dart`
-
-**GOOD:**
-
-* `slider_menu.dart`
-* `file_system.dart`
-
-Files without a strict `.dart` extension are ignored.  For example:
-
-**OK:**
-
-* `file-system.g.dart`
-* `SliderMenu.css.dart`
-
-The lint `library_names` can be used to enforce the same kind of naming on the
-library.
+**DON'T:**
+```dart
+  class gift{}
+  enum category_type{}
+  class Icon-Calculator-Button extends StatelessWidget{}
+  extension StringExtension on String {}
+```
 
 ''';
 
-class PreferCamelCase extends LintRule {
-  static const LintCode code = LintCode(
-      'prefer_camel_case', "The type name '{0}' isn't an CamelCase identifier.",
+class PreferUpperCamelCase extends LintRule {
+  static const LintCode code = LintCode('prefer_upper_camel_case',
+      "The type name '{0}' isn't an UpperCamelCase identifier.",
       correctionMessage:
-          'Try changing the name to follow the CamelCase style. example: camelCase for variable/function and CamelCase for class');
+          'Try changing the name to follow the UpperCamelCase style. example: GiftService');
 
-  PreferCamelCase()
+  PreferUpperCamelCase()
       : super(
-            name: 'prefer_camel_case',
+            name: 'prefer_upper_camel_case',
             description: _desc,
             details: _details,
             group: Group.style);
@@ -70,8 +60,7 @@ class PreferCamelCase extends LintRule {
     registry.addClassTypeAlias(this, visitor);
     registry.addFunctionTypeAlias(this, visitor);
     registry.addEnumDeclaration(this, visitor);
-    registry.addDeclaredVariablePattern(this, visitor);
-    registry.addVariableDeclarationList(this, visitor);
+    registry.addExtensionDeclaration(this, visitor);
   }
 }
 
@@ -82,7 +71,7 @@ class _Visitor extends SimpleAstVisitor<void> {
 
   void check(Token name) {
     var lexeme = name.lexeme;
-    if (!lexeme.isCamelCase()) {
+    if (!lexeme.isUpperCamelCase()) {
       rule.reportLintForToken(name, arguments: [lexeme]);
     }
   }
@@ -118,12 +107,10 @@ class _Visitor extends SimpleAstVisitor<void> {
   }
 
   @override
-  void visitVariableDeclarationList(VariableDeclarationList node) {
-    var variables = node.variables;
-    for (var variable in variables) {
-      if (!variable.isConst) {
-        check(variable.name);
-      }
+  void visitExtensionDeclaration(ExtensionDeclaration node) {
+    var name = node.name;
+    if (name != null) {
+      check(name);
     }
   }
 }

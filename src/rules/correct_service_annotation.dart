@@ -10,9 +10,42 @@ import 'package:analyzer/src/dart/error/lint_codes.dart';
 
 import '../../helper/string_extention.dart';
 
-const _desc = r'Name source files using `lowercase_with_underscores`.';
+const _desc =
+    r'RestApi Annotation is required to be declared for retrofit pattern';
 
-const _details = r'''
+const _details =
+    '''
+RestApi Annotation is required to be declared on top of service class for retrofit pattern.
+When adding the service end point it is better to create it in separated file instead of
+directly write it inside of retrofit methods.
+**NOTE:** always add CancelRequest() to cancel previous retrofit request inside of
+each service
+
+**DO:**
+```dart
+@RestApi() //RestApi Annotation is added
+abstract class ProductServices {
+  factory ProductServices(Dio dio) = _ProductServices;
+
+  @GET(ProductServiceConstant.listProducts) // endpoint created in separated file
+  Future<Model> listProducts(
+      @CancelRequest() CancelToken cancelToken, //CancelRequest in added
+  );
+}
+```
+
+**DON'T:**
+```dart
+//Forget to add RestApi Annotation
+abstract class ProductServices {
+  factory ProductServices(Dio dio) = _ProductServices;
+
+  @GET("api/products") // endpoint provided with string
+  Future<Model> listProducts(
+      //Forget to add CancelRequest
+  );
+}
+```
 
 ''';
 

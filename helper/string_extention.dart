@@ -49,8 +49,7 @@ extension LintStringExt on String {
   }
 
   bool isPathRGBCodeBase() {
-    RegExp regExp = RegExp(
-        r'.*gloryconventionlintplayground/json_api/*');
+    RegExp regExp = RegExp(r'.*gloryconventionlintplayground/json_api/*');
     return regExp.hasMatch(this);
   }
 
@@ -158,72 +157,13 @@ extension LintStringExt on String {
     return rawClassName;
   }
 
-  bool isCamelCase() {
-    final _camelCaseTester = RegExp(r'^[A-Z]?[a-z]+(?:[A-Z][a-z]+)*$');
+  bool isLowerCamelCase() {
+    final _camelCaseTester = RegExp(r'^[a-z]+(?:[A-Z][a-z]*)*$');
     return _camelCaseTester.hasMatch(this);
   }
 
-  String getWrongModelClassNameMessage() {
-    String message = '';
-
-    if (contains('Service')) {
-      message =
-          'service class name should only be declared in services directory. '
-          '\n please change class name with correct name';
-    }
-
-    if (contains('Enum')) {
-      message = 'Enum class name should only be declared in enum directory. '
-          '\n please change class name with correct name';
-    }
-
-    if (contains('Response')) {
-      message =
-          'Response class name should only be declared in response directory.'
-          '\n please change class name with correct name';
-    }
-
-    if (contains('Request')) {
-      message =
-          'Request class name should only be declared in request directory.'
-          '\n please change class name with correct name';
-    }
-
-    return message;
-  }
-
-  String getWrongModelFileNameMessage() {
-    String message = 'File name is incorrect.'
-        '\n please move file to the correct directory or rename file with correct name';
-
-    if (this.isCorrectFileServiceName()) {
-      message =
-          'Service file name should only be created in services directory. '
-          '\n please move to file to the correct directory or rename file with correct name';
-    }
-
-    if (this.isCorrectFileModelName()) {
-      message = 'Model file name should only be created in model directory. '
-          '\n please move to file to the correct directory or rename file with correct name';
-    }
-
-    if (this.isCorrectFileEnumName()) {
-      message = 'Enum file name should only be created in enum directory. '
-          '\n please move to file to the correct directory or rename file with correct name';
-    }
-
-    if (this.isCorrectFileResponseName()) {
-      message =
-          'Response file name should only be created in response directory. '
-          '\n please move to file to the correct directory or rename file with correct name';
-    }
-
-    if (this.isCorrectFileRequestName()) {
-      message =
-          'Request file name should only be created in request directory. '
-          '\n please move to file to the correct directory or rename file with correct name';
-    }
-
-    return message;
+  bool isUpperCamelCase() {
+    final _camelCaseTester = RegExp(r'^_*(?:\$+_+)*[$?A-Z][$?a-zA-Z\d]*$');
+    return _camelCaseTester.hasMatch(this);
   }
 }

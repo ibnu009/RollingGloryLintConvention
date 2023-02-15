@@ -13,21 +13,32 @@ import 'package:cli_util/cli_logging.dart';
 
 import '../../helper/string_extention.dart';
 
+const _desc = r'Model class is preferable have nullable field';
 
+const _details = '''
+Fields of Model class is preferable to have nullable field. 
+example : String? instead of String
 
-const _desc = r' ';
-
-const _details = r'''
-**DO** ...
-
-**BAD:**
+**DO:**
 ```dart
+  class Product {
+  Product({
+    required this.name,
+  });
 
+  String? name;
+}
 ```
 
-**GOOD:**
+**DON'T:**
 ```dart
+  class Product {
+  Product({
+    required this.name,
+  });
 
+  String name;
+}
 ```
 
 ''';
@@ -39,10 +50,10 @@ class PreferNullableForModels extends LintRule {
 
   PreferNullableForModels()
       : super(
-      name: 'prefer_nullable_for_models',
-      description: _desc,
-      details: _details,
-      group: Group.style);
+            name: 'prefer_nullable_for_models',
+            description: _desc,
+            details: _details,
+            group: Group.style);
 
   @override
   LintCode get lintCode => code;

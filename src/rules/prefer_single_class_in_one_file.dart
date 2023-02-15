@@ -7,9 +7,24 @@ import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/src/lint/linter.dart';
 import 'package:analyzer/src/dart/error/lint_codes.dart';
 
-const _desc = r'Name source files using `lowercase_with_underscores`.';
+const _desc = r'One file must containts one class';
 
-const _details = r'''
+const _details = '''
+**AVOID:** Declaring multiple classes in one file.
+It is best practice to declare one class in one file instead of multiple of class in one files, to reduce
+confusion. 
+
+**DO:**
+```dart
+  class OneClass{}
+```
+
+**DON'T:**
+```dart
+  class OneClass{}
+  class TwoClass{}
+```
+
 ''';
 
 class PreferSingleClassInOneFile extends LintRule {

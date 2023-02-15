@@ -9,15 +9,30 @@ import 'package:analyzer/src/dart/error/lint_codes.dart';
 
 import '../../helper/string_extention.dart';
 
-const _desc = r'Name source files using `lowercase_with_underscores`.';
+const _desc = r'Request class must always end with "Request". ';
 
-const _details = r'''
+const _details =
+    '''
+Request class must always end with "Request". 
+
+**DO:**
+```dart
+  class GiftRequest{}
+  class ProductRequest{}
+```
+
+**DON'T:**
+```dart
+  class Gift{}
+  class ProductService{}
+```
+
 ''';
 
 class CorrectRequestClassName extends LintRule {
   static const LintCode code = LintCode('correct_request_class_name',
       "The class name isn't a correct name for request class. Example : 'ExampleRequest'",
-      correctionMessage: 'Try changing the name that ends with "Response".');
+      correctionMessage: 'Try changing the name that ends with "Request".');
 
   CorrectRequestClassName()
       : super(
