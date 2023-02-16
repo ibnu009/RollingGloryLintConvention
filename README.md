@@ -8,19 +8,19 @@
 GloryConventionLint is judgment code for Convention lint in IDE Android Studio support Flutter.
 
 #### Model 
-* [Correct model class name](#camelcase-convention)
-* [Correct model file name](#capitalizationcase-convention)
-* [Correct model annotation](#classcase-convention)
-* [Prefer nullable for model](#constantcase-convention)
+* [Correct model class name](#corret-model-class-name)
+* [Correct model file name](#correct-model-file-name)
+* [Correct model annotation](#correct-model-annotation)
+* [Prefer nullable for model](#prefer-nullable-for-model)
 
 #### Service
-* [Correct service class name](#example-report-issue-camelcase)
-* [Correct service file name](#example-report-issue-methodcase)
-* [Correct service annotation](#example-report-issue-classcase)
+* [Correct service class name](#correct-service-class-name)
+* [Correct service file name](#correct-service-file-name)
+* [Correct service annotation](#correct-service-annotation)
 
 #### Enum 
-* [Correct enum class name](#frequently-asked-questions)
-* [Correct enum file name](#frequently-asked-questions)
+* [Correct enum class name](#correct-enum-class-name)
+* [Correct enum file name](#correct-enum-file-name)
 
 &nbsp;
 ---
