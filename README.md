@@ -26,7 +26,7 @@ GloryConventionLint is judgment code for Convention lint in IDE Android Studio s
 ---
 &nbsp;
 #### Installing 
-Don't forget to add this line ***glory_convention_lint: ^x.x.x*** to your pubspec.yaml file, and run ***flutter_pub_get*** from terminal.
+Don't forget to add this line ***glory_convention_lint: ^x.x.x*** to your pubspec.yaml file, and run ***flutter pub get*** from terminal.
 ~~~gradle
 dev_dependencies:
   glory_convention_lint: ^0.0.1
