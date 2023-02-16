@@ -49,7 +49,7 @@ dev_dependencies:
 
 ## Conventions
 
-#### Model
+### Model
 Ensure to add Model word at the end of class name in models file.
 ~~~dart
 import 'package:json_annotation/json_annotation.dart';  
@@ -68,6 +68,67 @@ class AnimationModel {
    factory Animation.fromJson(Map<String, dynamic> json) =>  
       _$AnimationFromJson(json);  
   Map<String, dynamic> toJson() => _$AnimationToJson(this);  
+}
+~~~
+#### 1. Correct model class name 
+Request class always end with "Request", and must use *PascalCase*.
+~~~dart
+**DO:**
+```dart
+class ProductModel {}
+```
+
+**DON'T:**
+```dart
+class ProductModel {}
+~~~
+#### 2. Correct model file name 
+Request class always end with "Request", and must use *PascalCase*.
+~~~dart
+//DO
+class GiftRequest{}
+class ProductRequest{}
+
+//DON'T
+class Gift{}
+class product_request{}
+~~~
+#### 3. Correct model annotation
+Request class always end with "Request", and must use *PascalCase*.
+~~~dart
+**DO:**
+```dart
+@JsonSerializable()
+class ProductModel {
+  int? id;
+}
+```
+**DON'T:**
+```dart
+class ProductModel {
+  int? id;
+}
+@JsonSerializable()
+~~~
+#### 4. Prefer nullable for models 
+Request class always end with "Request", and must use *PascalCase*.
+~~~dart
+**DO:**
+```dart
+  class Product {
+  String? name;
+    Product({
+      this.name,
+  });
+}
+```
+**DON'T:**
+```dart
+  class Product {
+  String name;
+    Product({
+      this.name,
+  });
 }
 ~~~
 
