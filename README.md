@@ -71,7 +71,7 @@ class AnimationModel {
 }
 ~~~
 #### 1. Correct model class name 
-Request class always end with "Request", and must use *PascalCase*.
+Ensure to add Model word at the end of class name in models file
 ~~~dart
 **DO:**
 ```dart
@@ -83,7 +83,7 @@ class ProductModel {}
 class ProductModel {}
 ~~~
 #### 2. Correct model file name 
-Request class always end with "Request", and must use *PascalCase*.
+The file name for models must end with _model.dart
 ~~~dart
 //DO
 class GiftRequest{}
@@ -94,7 +94,7 @@ class Gift{}
 class product_request{}
 ~~~
 #### 3. Correct model annotation
-Request class always end with "Request", and must use *PascalCase*.
+Add @JsonSerializable() from Retrofit to above your class model name
 ~~~dart
 **DO:**
 ```dart
@@ -111,7 +111,7 @@ class ProductModel {
 @JsonSerializable()
 ~~~
 #### 4. Prefer nullable for models 
-Request class always end with "Request", and must use *PascalCase*.
+Fields of Model class is preferable to have nullable field. example : String? instead of String
 ~~~dart
 **DO:**
 ```dart
