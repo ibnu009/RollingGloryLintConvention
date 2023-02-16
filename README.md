@@ -49,7 +49,7 @@ dev_dependencies:
 
 ## Conventions
 
-#### 1. Model
+#### Model
 Ensure to add Model word at the end of class name in models file.
 ~~~dart
 import 'package:json_annotation/json_annotation.dart';  
@@ -71,7 +71,7 @@ class AnimationModel {
 }
 ~~~
 
-#### 2. Service
+#### Service
 Services class must always end with "Services"
 ~~~dart
 abstract class AvatarServices {
@@ -82,25 +82,10 @@ abstract class AvatarServices {
 }
 ~~~
 
-#### 3. Enum
+#### Enum
 Ensure to add Model word at the end of class name in models file.
 ~~~dart
-import 'package:json_annotation/json_annotation.dart';  
-  
-part 'animation_model.g.dart';  
-  
-@JsonSerializable()  
-class AnimationModel {  
-  int? id;  
-  String? title;  
-  String? posterURL;  
-  String? imdbId;  
-  
-  Animation({this.id, this.title, this.posterURL, this.imdbId});  
-  
-   factory Animation.fromJson(Map<String, dynamic> json) =>  
-      _$AnimationFromJson(json);  
-  Map<String, dynamic> toJson() => _$AnimationToJson(this);  
+enum AvatarEnum {
 }
 ~~~
 
