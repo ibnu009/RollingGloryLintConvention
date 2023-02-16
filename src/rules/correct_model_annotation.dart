@@ -14,7 +14,8 @@ const _desc = r'The @JsonSerializable() must be applied in model file';
 
 const _details = r'''
 **CAUTION** ...
-@JsonSerializable()
+Retrofit is a Dio client that makes consuming Rest APIs easier for us, since we use retrofit in the development, 
+don't forget to add @JsonSerializable() to above your class name.
 
 **DO:**
 ```dart
