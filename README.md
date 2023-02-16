@@ -11,7 +11,7 @@ GloryConventionLint is judgment code for Convention lint in IDE Android Studio s
 * [Correct model class name](#1-correct-model-class-name)
 * [Correct model file name](#2-correct-model-file-name)
 * [Correct model annotation](#3-correct-model-annotation)
-* [Prefer nullable for model](#4-prefer-nullable-for-model)
+* [Prefer nullable for models](#4-prefer-nullable-for-models)
 
 #### Service
 * [Correct service class name](#1-correct-service-class-name)
