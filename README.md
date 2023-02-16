@@ -54,24 +54,16 @@ dev_dependencies:
 Ensure to add Model word at the end of class name in models file
 ~~~dart
 **DO:**
-```dart
 class ProductModel {}
-```
-
 **DON'T:**
-```dart
 class ProductModel {}
 ~~~
 #### 2. Correct model file name 
 The file name for models must end with _model.dart
 ~~~dart
 **DO:**
-```dart
 product_model.dart
-```
-
 **DON'T:**
-```dart
 product.dart
 productmodel.dart
 ```
@@ -80,12 +72,10 @@ productmodel.dart
 Add @JsonSerializable() from Retrofit to above your class model name
 ~~~dart
 **DO:**
-```dart
 @JsonSerializable()
 class ProductModel {
   int? id;
 }
-```
 **DON'T:**
 ```dart
 class ProductModel {
@@ -104,9 +94,7 @@ Fields of Model class is preferable to have nullable field. example : String? in
       this.name,
   });
 }
-```
 **DON'T:**
-```dart
   class Product {
   String name;
     Product({
