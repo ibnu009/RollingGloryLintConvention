@@ -8,7 +8,7 @@
 GloryConventionLint is judgment code for Convention lint in IDE Android Studio support Flutter.
 
 #### Model 
-* [Correct model class name](#1-corret-model-class-name)
+* [Correct model class name](#1-correct-model-class-name)
 * [Correct model file name](#2-correct-model-file-name)
 * [Correct model annotation](#3-correct-model-annotation)
 * [Prefer nullable for model](#4-prefer-nullable-for-model)
