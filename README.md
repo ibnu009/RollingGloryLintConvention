@@ -50,26 +50,6 @@ dev_dependencies:
 ## Conventions
 
 ### Model
-Ensure to add Model word at the end of class name in models file.
-~~~dart
-import 'package:json_annotation/json_annotation.dart';  
-  
-part 'animation_model.g.dart';  
-  
-@JsonSerializable()  
-class AnimationModel {  
-  int? id;  
-  String? title;  
-  String? posterURL;  
-  String? imdbId;  
-  
-  Animation({this.id, this.title, this.posterURL, this.imdbId});  
-  
-   factory Animation.fromJson(Map<String, dynamic> json) =>  
-      _$AnimationFromJson(json);  
-  Map<String, dynamic> toJson() => _$AnimationToJson(this);  
-}
-~~~
 #### 1. Correct model class name 
 Ensure to add Model word at the end of class name in models file
 ~~~dart
@@ -85,13 +65,16 @@ class ProductModel {}
 #### 2. Correct model file name 
 The file name for models must end with _model.dart
 ~~~dart
-//DO
-class GiftRequest{}
-class ProductRequest{}
+**DO:**
+```dart
+product_model.dart
+```
 
-//DON'T
-class Gift{}
-class product_request{}
+**DON'T:**
+```dart
+product.dart
+productmodel.dart
+```
 ~~~
 #### 3. Correct model annotation
 Add @JsonSerializable() from Retrofit to above your class model name
