@@ -9,9 +9,22 @@ import 'package:analyzer/src/dart/error/lint_codes.dart';
 
 import '../../helper/string_extention.dart';
 
-const _desc = r'Name source files using `lowercase_with_underscores`.';
+const _desc = r'The class name for enums must have Enum word';
 
 const _details = r'''
+**CAUTION** ...
+Ensure to add Enum word at the end of class name in constants file
+
+**DO:**
+```dart
+class ProductEnum {}
+```
+
+**DON'T:**
+```dart
+class ProductEnum {}
+```
+
 ''';
 
 class CorrectEnumClassName extends LintRule {

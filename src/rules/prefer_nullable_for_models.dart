@@ -2,15 +2,10 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'package:analyzer/dart/analysis/declared_variables.dart';
-import 'package:analyzer/dart/analysis/features.dart';
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
-import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/src/lint/linter.dart';
 import 'package:analyzer/src/dart/error/lint_codes.dart';
-import 'package:cli_util/cli_logging.dart';
-
 import '../../helper/string_extention.dart';
 
 const _desc = r'Model class is preferable have nullable field';
@@ -22,22 +17,20 @@ example : String? instead of String
 **DO:**
 ```dart
   class Product {
-  Product({
-    required this.name,
-  });
-
   String? name;
+    Product({
+      this.name,
+  });
 }
 ```
 
 **DON'T:**
 ```dart
   class Product {
-  Product({
-    required this.name,
-  });
-
   String name;
+    Product({
+      this.name,
+  });
 }
 ```
 

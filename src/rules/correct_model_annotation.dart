@@ -10,9 +10,30 @@ import 'package:analyzer/src/dart/error/lint_codes.dart';
 
 import '../../helper/string_extention.dart';
 
-const _desc = r'Name source files using `lowercase_with_underscores`.';
+const _desc = r'The @JsonSerializable() must be applied in model file';
 
 const _details = r'''
+**CAUTION** ...
+@JsonSerializable()
+
+**DO:**
+```dart
+
+@JsonSerializable()
+class ProductModel {
+  int? id;
+}
+```
+
+**DON'T:**
+```dart
+
+class ProductModel {
+  int? id;
+}
+@JsonSerializable()
+```
+
 ''';
 
 class CorrectModelAnnotation extends LintRule {

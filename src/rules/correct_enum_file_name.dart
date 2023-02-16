@@ -9,9 +9,23 @@ import 'package:analyzer/src/dart/error/lint_codes.dart';
 
 import '../../helper/string_extention.dart';
 
-const _desc = r'Name source files using `lowercase_with_underscores`.';
+const _desc = r'The file name for enums must end with _constant.dart';
 
 const _details = r'''
+**CAUTION** ...
+The file name for enums must end with _constant.dart
+
+**DO:**
+```dart
+product_enum.dart
+```
+
+**DON'T:**
+```dart
+product.dart
+productenum.dart
+```
+
 ''';
 
 class CorrectEnumFileName extends LintRule {

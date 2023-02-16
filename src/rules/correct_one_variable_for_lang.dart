@@ -4,26 +4,35 @@
 
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
-import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/src/lint/linter.dart';
 import 'package:analyzer/src/dart/error/lint_codes.dart';
-
 import '../../helper/string_extention.dart';
 
-const _desc = r' ';
+const _desc = r'Only one variable is allowed for lang file';
 
 const _details = r'''
-**DO** ...
+**CAUTION** ...
+Ensure to separate the variable that represents a language, one class is supposed to have one variable.
 
-**BAD:**
+**DO:**
 ```dart
 
+-- languages/id_lang.dart --
+Map<String,String> id = {};
+
+-- languages/en_lang.dart --
+Map<String,String> en = {};
 ```
 
-**GOOD:**
+**DON'T:**
 ```dart
 
+-- languages.dart --
+Map<String,String> id = {};
+Map<String,String> en = {};
 ```
+
+
 
 ''';
 
