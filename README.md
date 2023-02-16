@@ -77,7 +77,6 @@ class ProductModel {
   int? id;
 }
 **DON'T:**
-```dart
 class ProductModel {
   int? id;
 }
@@ -87,7 +86,6 @@ class ProductModel {
 Fields of Model class is preferable to have nullable field. example : String? instead of String
 ~~~dart
 **DO:**
-```dart
   class Product {
   String? name;
     Product({
@@ -103,22 +101,60 @@ Fields of Model class is preferable to have nullable field. example : String? in
 }
 ~~~
 
-#### Service
-Services class must always end with "Services"
+### Service
+#### 1. Correct service class name 
+Ensure to add Model word at the end of class name in models file
 ~~~dart
-abstract class AvatarServices {
-  factory AvatarServices(Dio dio) = _AvatarServices;
-
-  @GET(AvatarServiceConstant.episode)
-  Future<BaseListResponse<Episode>> episodes(@CancelRequest() CancelToken cancelToken);
+**DO:**
+  class GiftServices{}
+  class ProductServices{}
+**DON'T:**
+  class Gift{}
+  class ProductService{} // singular instead of plural
+~~~
+#### 2. Correct service file name 
+The file name for models must end with _model.dart
+~~~dart
+**DO:**
+  gift_services.dart
+  product_services.dart
+**DON'T:**
+  product_service.dart //singular instead of plural
+  ProductRequest.dart
+~~~
+#### 3. Correct service annotation
+Add @RestApi() from Retrofit to above your class service name
+~~~dart
+**DO:**
+@RestApi()
+class ProductModel {
+  int? id;
 }
+**DON'T:**
+class ProductModel {
+  int? id;
+}
+@RestApi()
 ~~~
 
-#### Enum
-Ensure to add Model word at the end of class name in models file.
+### Enum
+#### 1. Correct enum class name
+Ensure to add Enum word at the end of enum class name in the file.
 ~~~dart
-enum AvatarEnum {
-}
+**DO:**
+enum AvatarEnum {}
+**DON'T:**
+enum EnumAvatar {}
+~~~
+
+#### 2. Correct enum file name
+Ensure to add _enum.dart prefix at the end of file name.
+~~~dart
+**DO:**
+  gift_enum.dart
+  product_enum.dart
+**DON'T:**
+  ProductEnum.dart
 ~~~
 
 ### Request
