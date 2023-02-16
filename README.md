@@ -8,19 +8,19 @@
 GloryConventionLint is judgment code for Convention lint in IDE Android Studio support Flutter.
 
 #### Model 
-* [Correct model class name](#corret-model-class-name)
-* [Correct model file name](#correct-model-file-name)
-* [Correct model annotation](#correct-model-annotation)
-* [Prefer nullable for model](#prefer-nullable-for-model)
+* [Correct model class name](#1-corret-model-class-name)
+* [Correct model file name](#2-correct-model-file-name)
+* [Correct model annotation](#3-correct-model-annotation)
+* [Prefer nullable for model](#4-prefer-nullable-for-model)
 
 #### Service
-* [Correct service class name](#correct-service-class-name)
-* [Correct service file name](#correct-service-file-name)
-* [Correct service annotation](#correct-service-annotation)
+* [Correct service class name](#1-correct-service-class-name)
+* [Correct service file name](#2-correct-service-file-name)
+* [Correct service annotation](#3-correct-service-annotation)
 
 #### Enum 
-* [Correct enum class name](#correct-enum-class-name)
-* [Correct enum file name](#correct-enum-file-name)
+* [Correct enum class name](#1-correct-enum-class-name)
+* [Correct enum file name](#2-correct-enum-file-name)
 
 #### Request 
 * [Correct request class name](#1-correct-request-class-name)
@@ -53,17 +53,17 @@ dev_dependencies:
 #### 1. Correct model class name 
 Ensure to add Model word at the end of class name in models file
 ~~~dart
-**DO:**
+//DO
 class ProductModel {}
-**DON'T:**
+//DON'T
 class ProductModel {}
 ~~~
 #### 2. Correct model file name 
 The file name for models must end with _model.dart
 ~~~dart
-**DO:**
+//DO
 product_model.dart
-**DON'T:**
+//DON'T
 product.dart
 productmodel.dart
 ```
@@ -71,12 +71,12 @@ productmodel.dart
 #### 3. Correct model annotation
 Add @JsonSerializable() from Retrofit to above your class model name
 ~~~dart
-**DO:**
+//DO
 @JsonSerializable()
 class ProductModel {
   int? id;
 }
-**DON'T:**
+//DON'T
 class ProductModel {
   int? id;
 }
@@ -85,14 +85,14 @@ class ProductModel {
 #### 4. Prefer nullable for models 
 Fields of Model class is preferable to have nullable field. example : String? instead of String
 ~~~dart
-**DO:**
+//DO
   class Product {
   String? name;
     Product({
       this.name,
   });
 }
-**DON'T:**
+//DON'T
   class Product {
   String name;
     Product({
@@ -105,32 +105,32 @@ Fields of Model class is preferable to have nullable field. example : String? in
 #### 1. Correct service class name 
 Ensure to add Model word at the end of class name in models file
 ~~~dart
-**DO:**
+//DO
   class GiftServices{}
   class ProductServices{}
-**DON'T:**
+//DON'T
   class Gift{}
   class ProductService{} // singular instead of plural
 ~~~
 #### 2. Correct service file name 
 The file name for models must end with _model.dart
 ~~~dart
-**DO:**
+//DO
   gift_services.dart
   product_services.dart
-**DON'T:**
+//DON'T
   product_service.dart //singular instead of plural
   ProductRequest.dart
 ~~~
 #### 3. Correct service annotation
 Add @RestApi() from Retrofit to above your class service name
 ~~~dart
-**DO:**
+//DO
 @RestApi()
 class ProductModel {
   int? id;
 }
-**DON'T:**
+//DON'T
 class ProductModel {
   int? id;
 }
@@ -141,19 +141,19 @@ class ProductModel {
 #### 1. Correct enum class name
 Ensure to add Enum word at the end of enum class name in the file.
 ~~~dart
-**DO:**
+//DO
 enum AvatarEnum {}
-**DON'T:**
+//DON'T
 enum EnumAvatar {}
 ~~~
 
 #### 2. Correct enum file name
 Ensure to add _enum.dart prefix at the end of file name.
 ~~~dart
-**DO:**
+//DO
   gift_enum.dart
   product_enum.dart
-**DON'T:**
+//DON'T
   ProductEnum.dart
 ~~~
 
