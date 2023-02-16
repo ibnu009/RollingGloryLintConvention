@@ -284,7 +284,7 @@ Response file must always be put inside of response directory.
             <td>✅</td>
             <td></td>
             <td></td>
-            <td>int variable;</td>
+            <td>String param</td>
         </tr>
         <tr>
            <td>Method</td>
