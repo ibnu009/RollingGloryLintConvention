@@ -103,7 +103,7 @@ Fields of Model class is preferable to have nullable field. example : String? in
 
 ### Service
 #### 1. Correct service class name 
-Ensure to add Model word at the end of class name in models file
+Ensure to add Services word at the end of class name in models file
 ~~~dart
 //DO
   class GiftServices{}
@@ -113,7 +113,7 @@ Ensure to add Model word at the end of class name in models file
   class ProductService{} // singular instead of plural
 ~~~
 #### 2. Correct service file name 
-The file name for models must end with _model.dart
+The file name for services must end with service.dart
 ~~~dart
 //DO
   gift_services.dart
