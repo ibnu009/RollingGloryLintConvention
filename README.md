@@ -263,7 +263,7 @@ Response file must always be put inside of response directory.
             <td>int id;</td>
         </tr>
         <tr>
-           <td>variable</td>
+           <td>Variable</td>
             <td></td>
             <td>✅</td>
             <td></td>
@@ -277,6 +277,14 @@ Response file must always be put inside of response directory.
             <td></td>
             <td>✅</td>
             <td>int _variable;</td>
+        </tr>
+        <tr>
+           <td>Parameter</td>
+            <td></td>
+            <td>✅</td>
+            <td></td>
+            <td></td>
+            <td>int variable;</td>
         </tr>
         <tr>
            <td>Method</td>
