@@ -12,6 +12,21 @@ import '../../helper/string_extention.dart';
 const _desc = r"Please declare variable as static const.";
 
 const _details = r'''
+  Declare variable as static const.
+
+**DO:**
+```dart
+  class One {
+    static const variableOne = "Value"
+  }
+```
+
+**DON'T:**
+```dart
+  class One {
+    String variableOne = "Value";
+  }
+```
 ''';
 
 class PreferStaticConstLangVariable extends LintRule {
