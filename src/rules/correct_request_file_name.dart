@@ -9,11 +9,10 @@ import 'package:analyzer/src/dart/error/lint_codes.dart';
 
 import '../../helper/string_extention.dart';
 
-const _desc = r'Response file must always end with "_request". ';
+const _desc = r'Request file must always end with "_request". ';
 
-const _details =
-    '''
-Response file must always end with "_request"  and should always use snake case for file naming.
+const _details = '''
+Request file must always end with "_request"  and should always use snake case for file naming.
 
 **DO:**
 ```dart
