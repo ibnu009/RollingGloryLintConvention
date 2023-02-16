@@ -126,15 +126,11 @@ The file name for services must end with service.dart
 Add @RestApi() from Retrofit to above your class service name
 ~~~dart
 //DO
-@RestApi()
-class ProductModel {
-  int? id;
-}
+@RestApi() //RestApi Annotation is added
+abstract class ProductServices {}
 //DON'T
-class ProductModel {
-  int? id;
-}
-@RestApi()
+//Forget to add RestApi Annotation
+abstract class ProductServices {}
 ~~~
 
 ### Enum
