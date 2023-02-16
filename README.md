@@ -88,16 +88,12 @@ Fields of Model class is preferable to have nullable field. example : String? in
 //DO
   class Product {
   String? name;
-    Product({
-      this.name,
-  });
+  Product({this.name});
 }
 //DON'T
   class Product {
   String name;
-    Product({
-      this.name,
-  });
+  Product({this.name});
 }
 ~~~
 
